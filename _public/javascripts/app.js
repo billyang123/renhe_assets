@@ -118,47 +118,141 @@ $(document).ready(function() {
 })
 });
 
+;require.register("scripts/module/ajax", function(exports, require, module) {
+var $document;
+
+$document = $(document);
+
+$document.on('ajax:success', '[data-done], [data-target]', function(evt, res) {
+  var $res, $self, done, hasIn, self, target;
+  if (this !== evt.target) {
+    return;
+  }
+  self = this;
+  $self = $(this);
+  $res = $(res);
+  target = $self.data('target');
+  done = $self.data('done');
+  hasIn = $res.hasClass('in');
+  if (hasIn) {
+    $res.removeClass('in');
+  }
+  if (target) {
+    $res.appendTo(target);
+  }
+  if (done) {
+    (new Function('res', 'r', '$r', done)).call(self, res, res, $res);
+  }
+  if (hasIn) {
+    $res.prop('offsetWidth');
+  }
+  if (hasIn) {
+    $res.addClass('in');
+  }
+  if ($self.is('form')) {
+    return $self[0].reset();
+  }
+});
+
+$document.on('ajax:send', 'a[data-remote], form[data-remote], button', function(evt) {
+  var $this;
+  if (this !== evt.target) {
+    return;
+  }
+  $this = $(this);
+  if ($this.is('form')) {
+    return $this.find(':submit:enabled').attr('disabled', 'disabled').attr('data-disabled-by', 'ajax');
+  } else if ($this.is(':enabled')) {
+    return $this.attr('disabled', 'disabled');
+  } else {
+    return $this.addClass('rh-disabled');
+  }
+});
+
+$document.on('ajax:complete', 'a[data-remote], form[data-remote], button', function(evt) {
+  var $this;
+  if (this !== evt.target) {
+    return;
+  }
+  $this = $(this);
+  if ($this.is('form')) {
+    return $this.find(':submit:disabled[data-disabled-by=ajax]').removeAttr('disabled').removeAttr('data-disabled-by');
+  } else if ($this.is(':disabled')) {
+    return $this.removeAttr('disabled');
+  } else {
+    $this.removeClass('rh-disabled');
+    if ($this.is('[data-remote-once=true]')) {
+      $this.removeAttr('data-remote');
+      return $this.on('click', function(evt) {
+        return evt.preventDefault();
+      });
+    }
+  }
+});
+
+$(window).on('beforeunload', function() {
+  $document.off('ajax:error');
+});
+});
+
 ;require.register("scripts/register/index", function(exports, require, module) {
-$.fn.sliderNav = function(options) {
-	var defaults = { items: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"], debug: false, height: null, arrows: true};
-	var opts = $.extend(defaults, options); var o = $.meta ? $.extend({}, opts, $$.data()) : opts; var slider = $(this); $(slider).addClass('slider');
-	$('.slider-content li:first', slider).addClass('selected');
-	$(slider).append('<div class="slider-nav"><ul></ul></div>');
-	for(var i in o.items) $('.slider-nav ul', slider).append("<li><a alt='#"+o.items[i]+"'>"+o.items[i]+"</a></li>");
-	var height = $('.slider-nav', slider).height();
-	if(o.height) height = o.height;
-	$('.slider-content, .slider-nav', slider).css('height',height);
-	if(o.debug) $(slider).append('<div id="debug">Scroll Offset: <span>0</span></div>');
-	$('.slider-nav a', slider).mouseover(function(event){
-		var target = $(this).attr('alt');
+require('scripts/module/ajax')
+$(function() {
+  $('#doc-vld-msg').validator({
 
-		var cOffset = $('.slider-content', slider).offset().top;
-		//if($('.slider-content'+target, slider).length==0) return;
-		var tOffset = $('.slider-content '+target, slider).offset().top;
-		var height = $('.slider-nav', slider).height(); if(o.height) height = o.height;
-		var pScroll = (tOffset - cOffset) - height/8;
-		$('.slider-content li', slider).removeClass('selected');
-		$(target).addClass('selected');
-		$('.slider-content', slider).stop().animate({scrollTop: '+=' + pScroll + 'px'});
-		if(o.debug) $('#debug span', slider).html(tOffset);
-	});
-	if(o.arrows){
-		$('.slider-nav',slider).css('top','20px');
-		$(slider).prepend('<div class="slide-up end"><span class="arrow up"></span></div>');
-		$(slider).append('<div class="slide-down"><span class="arrow down"></span></div>');
-		$('.slide-down',slider).click(function(){
-			$('.slider-content',slider).animate({scrollTop : "+="+height+"px"}, 500);
-		});
-		$('.slide-up',slider).click(function(){
-			$('.slider-content',slider).animate({scrollTop : "-="+height+"px"}, 500);
-		});
-	}
-};
+    onValid: function(validity) {
+      $(validity.field).closest('.rh-form-group').find('.rh-error').hide();
+    },
+    onInValid: function(validity) {
+      var $field = $(validity.field);
+      var $group = $field.closest('.rh-u-sm-8');
+      var $alert = $group.find('.rh-error');
+      // 使用自定义的提示信息 或 插件内置的提示信息
+      var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
 
-	//$(document).ready(function(){
-//		$('#slider').sliderNav();
-//		$('#transformers').sliderNav({items:['autobots','decepticons'], debug: true, height: '300', arrows: false});
-//	});
+      if (!$alert.length) {
+        $alert = $('<div class="rh-error"></div>').hide().
+          appendTo($group);
+      }
+      $alert.html('<i class="rh-icon-warning"></i>'+msg).show();
+    }
+  });
+  $(document).on("ajax:before",'a.js-sccode',function(e){
+  	$(this).data('params',{'iphone':$("#doc-ipt-1").val()})
+  })
+  $(document).on("ajax:success",'a.js-sccode',function(e,data){
+  	var _type = $(this).data("one-send");
+  	if(_type == true){
+  		$(this).text("重新发送")
+  	}
+  })
+  var toggleFn = function(target){
+  	var fes;
+  	if(target.hasClass('rh-icon-circle-o')){
+  		target.removeClass('rh-icon-circle-o').addClass('rh-icon-check-circle');
+  		 fes = true;
+  	}else if(target.hasClass('rh-icon-check-circle')){
+  		target.removeClass('rh-icon-check-circle').addClass('rh-icon-circle-o');
+  		fes = false;
+  	}else{
+  		fes = false
+  	}
+  	return fes;
+  }
+  $("#slider .reg-list-icon").click(function(e){
+  	toggleFn($(this));
+  })
+  $('#slider .reg-option').click(function(){
+  	var stg = toggleFn($(this));
+  	$("#slider .reg-list-icon").each(function(){
+  		if(stg){
+  			$(this).removeClass('rh-icon-check-circle').addClass('rh-icon-circle-o');
+  		}else{
+  			$(this).removeClass('rh-icon-circle-o').addClass('rh-icon-check-circle');
+  		}
+  	})
+  })
+});
 
 });
 

@@ -14091,6 +14091,9 @@ fieldset[disabled] .rh-btn-purple.rh-active {
   font-size: 1.6rem;
 }
 
+body {
+  background-color: #E6E6E6;
+}
 .clearfix {
   *zoom: 1;
 }
@@ -14114,6 +14117,10 @@ fieldset[disabled] .rh-btn-purple.rh-active {
   position: absolute;
   top: 5px;
   right: 0;
+}
+.rh-error {
+  color: red;
+  font-size: 12px;
 }
 
 

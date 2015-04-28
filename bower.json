@@ -16,6 +16,14 @@
   ],
   "dependencies": {
     "jquery": "~2.1.3",
-    "jquery-ujs": "~1.0.3"
+    "jquery-ujs": "~1.0.3",
+    "amazeui": "~2.3.0"
+  },
+  "overrides": {
+    "amazeui":{
+      "main":[
+        "dist/js/amazeui.min.js"
+      ]
+    }
   }
 }

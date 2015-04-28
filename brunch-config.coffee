@@ -12,6 +12,7 @@ exports.config =
         before: [
           'bower_components/jquery/dist/jquery.js'
           'bower_components/jquery-ujs/src/rails.js'
+          'bower_components/amazeui/dist/amazeui.js'
         ]
       pluginHelpers: 'javascript/vendor.js'
     stylesheets:

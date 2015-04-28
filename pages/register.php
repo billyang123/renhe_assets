@@ -26,21 +26,27 @@
           </a>
         </div>
       </header>
+      <div class="j-alert-content">
+        <div class="rh-alert rh-alert-r rh-clearfix">
+          <i class="rh-icon-check-circle rh-tip-icon"></i>导入并邀请邮箱通讯录中的好友，快速拓展你的人脉提升社交的效率。
+        </div>
+      </div>
       <section>
-        <form class="rh-form rh-form-horizontal">
+        <form class="rh-form rh-form-horizontal" id="doc-vld-msg">
           <div class="rh-form-group reg-group">
-            <label for="doc-ipt-1" class="rh-u-sm-4 rh-form-label">手机号码</label>
+            <label for="doc-ipt-1" class="rh-u-sm-4 rh-form-label" >手机号码</label>
             <div class="rh-u-sm-8">
-              <input type="text" id="doc-ipt-1" placeholder="请输入你的手机号码">
+              <input type="text" id="doc-ipt-1" placeholder="请输入你的手机号码" name="phone" required pattern="^1((3|5|8){1}\d{1}|70)\d{8}$">
             </div>
+            
           </div>
           <div class="rh-form-group reg-group">
             <label for="doc-ipt-2" class="rh-u-sm-4 rh-form-label">验证码</label>
             <div class="rh-u-sm-6">
-              <input type="text" id="doc-ipt-2" placeholder="请输入验证码">
+              <input type="text" id="doc-ipt-2" placeholder="请输入验证码" name="code" required>
             </div>
             <div class="rh-u-sm-2 rh-relative">
-              <button type="button" class="rh-btn rh-btn-default rh-btn-xs rh-radius-r rh-insideput">重新发送</button>
+              <a class="rh-btn rh-btn-default rh-btn-xs rh-radius-r rh-insideput js-sccode" data-one-send="true" href="/pages/a.json" data-remote="true">发送</a>
             </div>
           </div>
           <div class="rh-form-group reg-group">
@@ -124,7 +130,7 @@
                 <a name="a" class="reg-cl-title">A</a>
                 <ul class="rh-list">
                   <li class="clearfix">
-                    <i class="rh-icon-check-circle rh-fl reg-list-icon rh-icon-md"></i>
+                    <i class="rh-icon-circle-o rh-fl reg-list-icon rh-icon-md"></i>
                     <div class="rh-fl">
                       <strong>billyang</strong></br>
                       <span>289755081@qq.com</span>
