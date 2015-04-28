@@ -1,0 +1,25 @@
+.clearfix { 
+	*zoom: 1;
+}
+.clearfix:before, .clearfix:after { 
+  display: table; 
+  line-height: 0; 
+  content: ""; 
+} 
+.clearfix:after { 
+	clear: both; 
+}
+.rh- {
+	&tip-icon {
+		color: #45c01a;
+		font-size: 18px;
+	}
+	&relative {
+		position: relative;
+	}
+	&insideput {
+		position: absolute;
+		top: 5px;
+		right: 0;
+	}
+}

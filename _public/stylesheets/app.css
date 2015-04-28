@@ -4186,8 +4186,8 @@ a.rh-close:hover {
 ============================================================================= */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('//dn-staticfile.qbox.me/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0');
-  src: url('//dn-staticfile.qbox.me/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('//dn-staticfile.qbox.me/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('//dn-staticfile.qbox.me/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('//dn-staticfile.qbox.me/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('//dn-staticfile.qbox.me/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
+  src: url('/_public/fonts/fontawesome-webfont.eot?v=4.3.0');
+  src: url('/_public/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('/_public/fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('/_public/fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('/_public/fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('/_public/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14075,6 +14075,46 @@ fieldset[disabled] .rh-btn-purple.rh-active {
 .rh-btn-group-stacked .rh-btn-purple {
   border-color: #8161ca;
 }
+.rh-alert-r {
+  margin-top: 0px;
+  position: relative;
+  background-color: #4c4c4c;
+  border-color: #4c4c4c;
+  color: white;
+  padding-left: 40px;
+  font-size: 12px;
+}
+.rh-alert-r > i {
+  position: absolute;
+  left: 20px;
+  top: 4px;
+  font-size: 1.6rem;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.rh-tip-icon {
+  color: #45c01a;
+  font-size: 18px;
+}
+.rh-relative {
+  position: relative;
+}
+.rh-insideput {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
 
 
 .reg-container {
@@ -14092,12 +14132,74 @@ fieldset[disabled] .rh-btn-purple.rh-active {
 .reg-group {
   background-color: #FFF;
 }
+.reg-group label {
+  text-align: right;
+  font-weight: normal;
+  color: #888;
+}
 .reg-group:first-child {
   margin-top: 1.5rem;
 }
 .reg-group input,
 .reg-group input:focus {
+  outline: 0;
   border: 0 !important;
+}
+.reg-text {
+  width: 80%;
+  display: inline-block;
+  text-align: left;
+  font-size: 12px;
+}
+.reg-contacts-list {
+  margin-bottom: 52px;
+}
+.reg-contacts-list > li {
+  border: 0 !important;
+}
+.reg-contacts-list ul {
+  margin: 0;
+}
+.reg-contacts-list ul > li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.reg-contacts-list ul > li:last-child {
+  border-bottom: 0;
+}
+.reg-contacts-list .reg-cl-title {
+  padding: 0;
+  line-height: 54px;
+}
+.reg-cl-title {
+  background-color: #ebebeb;
+  height: 54px;
+  text-indent: 22px;
+}
+.reg-list-icon {
+  color: #34a7fc;
+  margin-top: 10px;
+}
+.reg-option {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 5px 20px;
+  background-color: #EBEBEB;
+}
+.reg-option > strong {
+  margin-top: 8px;
+  margin-left: 5px;
+  line-height: 27px;
+}
+.reg-option .reg-list-icon {
+  margin: 8px 0 0 0;
+}
+.reg-email-ipt > span {
+  width: 20%;
+  text-align: center;
+  font-size: 18px;
+  line-height: 42px;
 }
 
 
