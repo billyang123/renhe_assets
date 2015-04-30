@@ -35,8 +35,8 @@ $document.on 'ajax:success', '[data-done], [data-target]', (evt, res) ->
 
 $document.on 'ajax:send', 'a[data-remote], form[data-remote], button', (evt) ->
   return if this isnt evt.target
-
   $this = $ this
+  return $this.button 'loading' if $this.data 'am-loading'
   if $this.is 'form'
     $this.find(':submit:enabled')
       .attr('disabled', 'disabled')
@@ -45,11 +45,11 @@ $document.on 'ajax:send', 'a[data-remote], form[data-remote], button', (evt) ->
   else if $this.is ':enabled'
     $this.attr 'disabled', 'disabled'
   else
-    $this.addClass 'rh-disabled'
+    $this.addClass 'am-disabled'
 $document.on 'ajax:complete', 'a[data-remote], form[data-remote], button', (evt) ->
   return if this isnt evt.target
-
   $this = $ this
+  return $this.button 'reset' if $this.data 'am-loading'
   if $this.is 'form'
     $this.find(':submit:disabled[data-disabled-by=ajax]')
       .removeAttr('disabled')
@@ -57,7 +57,7 @@ $document.on 'ajax:complete', 'a[data-remote], form[data-remote], button', (evt)
   else if $this.is ':disabled'
     $this.removeAttr 'disabled'
   else
-    $this.removeClass 'rh-disabled'
+    $this.removeClass 'am-disabled'
 
     if $this.is '[data-remote-once=true]'
       $this.removeAttr 'data-remote'

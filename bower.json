@@ -17,11 +17,12 @@
   "dependencies": {
     "jquery": "~2.1.3",
     "jquery-ujs": "~1.0.3",
-    "amazeui": "~2.3.0"
+    "amazeui": "~2.3.0",
+    "jquery-backstretch": "~2.0.4"
   },
   "overrides": {
-    "amazeui":{
-      "main":[
+    "amazeui": {
+      "main": [
         "dist/js/amazeui.min.js"
       ]
     }
