@@ -25,6 +25,9 @@
 		width: 100%;
 		color:#222222;
 	}
+	img {
+		display: inline-block;
+	}
 	.pagewrap{
 		height: 100%;
 	}
@@ -95,7 +98,6 @@
 		position: absolute;
 		bottom: 50px;
 		width: 100%;
-		margin-top: -150px;
 		text-align: center;
 	}
 
@@ -141,64 +143,116 @@
 		width: 100%;
 		text-align: center;
 	}
+	.slidecontent-hd {
+		position: absolute;
+		width: 100%;
+		top: 10%;
+		text-align: center;
+	}
+	.slidecontent-hd .page-sbkimg{
+		width: 28%;
+	}
+	@media screen and (min-width: 320px) and (max-width: 480px) {
+	    .slidecontent-hd {
+			top: 4%;
+		}
+		.slidecontent-hd .page-sbkimg{
+			width: 70%;
+		}
+	}
+	@media only screen and (min-width: 321px) and (max-width: 1024px) {
+	    .slidecontent-hd {
+			top: 4%;
+		}
+		.slidecontent-hd .page-sbkimg{
+			width: 80%;
+		}
+	}
+	@media all and (orientation : landscape) { /*　　这是匹配横屏的状态，横屏时的css代码　　*/
+		.slidecontent-hd {
+			top: 4%;
+		}
+		.slidecontent-hd .page-sbkimg{
+			width: 28%;
+		}
+	}
+	
   	</style>
 	<div class='pagewrap'>
 		<div class='pageblock' id='fullscreen'>
 			<div class='slider'>
 				<div class='slide' style="background-color:#fe514d;">
-					
-					<div class='slidecontent'>
-						<img src="/_public/images/user.jpg" width="200" height="200" class="rh-circle">
-						<p>
+					<div class='slidecontent-hd'>
+						<img src="/_public/images/user.jpg" width="150" height="150" class="am-circle">
+						<p style="padding: 0px 10px;">
 							<strong>何琴</strong><br/>
 							市场顾问<br/>
 							华腾财富投资顾问有限公司
 						</p>
-						<p class="rh-margin-top-lg">您的好友何琴邀请您下载使用和聊APP，保持永久联系。</p>
-						<a href="#" class="rh-btn rh-btn-white rh-radius-r" style="color:#fe514d;width:50%;">下载app</a><br>
-						<a href="#" class="rh-btn rh-btn-transparent rh-radius-r rh-margin-top-sm" style="width:50%;">注册和聊</a>
+						<p style="padding: 0px 10px;margin-top:0;">您的好友何琴邀请您下载使用和聊APP，保持永久联系。</p>
+					</div>
+					<div class='slidecontent'>
+						<a href="#" class="am-btn am-btn-white am-radius-r" style="color:#fe514d;width:50%;">下载app</a><br>
+						<a href="#" class="am-btn am-btn-transparent am-radius-r am-margin-top-sm" style="width:50%;">注册和聊</a>
+					</div>		
+				</div>
+				<div class='slide' style="background-color:#20c0f1;">
+					<div class='slidecontent-hd'>
+						<img src="/_public/images/text_02_bd.png"  class="am-center page-sbkimg">
+						<img src="/_public/images/view_02_bd.png" class="am-center am-margin-top-lg page-sbkimg">
+					</div>
+					<div class='slidecontent'>
+						<a href="#" class="am-btn am-btn-white am-radius-r" style="color:#56c9e8;width:50%;">下载app</a><br>
+						<a href="#" class="am-btn am-btn-transparent am-radius-r am-margin-top-sm" style="width:50%;">注册和聊</a>
+
 					</div>
 					
 				</div>
-				<div class='slide'>
-					<div class='slidecontent'>
-						<a href="#" class="rh-btn rh-btn-white rh-radius-r" style="color:#56c9e8;width:50%;">下载app</a><br>
-						<a href="#" class="rh-btn rh-btn-transparent rh-radius-r rh-margin-top-sm" style="width:50%;">注册和聊</a>
-
+				<div class='slide' style="background-color:#ffbc3d;">
+					<div class='slidecontent-hd'>
+						<img src="/_public/images/text_03_bd.png" class="am-center page-sbkimg">
+						<img src="/_public/images/view_03_bd.png" class="am-center am-margin-top-lg page-sbkimg">
 					</div>
-					<img src="/_public/images/h5_reg_guide_2.jpg" alt="找人脉更方便" class="js-guide-img">
-				</div>
-				<div class='slide'>
 					<div class='slidecontent'>
-						<a href="#" class="rh-btn rh-btn-white rh-radius-r" style="color:#ffbc3d;width:50%;">下载app</a><br>
-						<a href="#" class="rh-btn rh-btn-transparent rh-radius-r rh-margin-top-sm" style="width:50%;">注册和聊</a>
-			
+						<a href="#" class="am-btn am-btn-white am-radius-r" style="color:#ffbc3d;width:50%;">下载app</a><br>
+						<a href="#" class="am-btn am-btn-transparent am-radius-r am-margin-top-sm" style="width:50%;">注册和聊</a>
 					</div>
-					<img src="/_public/images/h5_reg_guide_3.jpg" alt="找生意更方便" class="js-guide-img">
 				</div>
-				<div class='slide'>
+				<div class='slide' style="background-color:#9074d0;">
+					<div class='slidecontent-hd'>
+						<img src="/_public/images/text_04_bd.png" class="am-center page-sbkimg">
+						<img src="/_public/images/view_041_bd.png" class="am-center am-margin-top-lg page-sbkimg">
+					</div>
 					<div class='slidecontent'>
-						<a href="#" class="rh-btn rh-btn-white rh-radius-r" style="color:#9074d0;width:50%;">下载app</a><br>
-						<a href="#" class="rh-btn rh-btn-transparent rh-radius-r rh-margin-top-sm" style="width:50%;">注册和聊</a>
+						<a href="#" class="am-btn am-btn-white am-radius-r" style="color:#9074d0;width:50%;">下载app</a><br>
+						<a href="#" class="am-btn am-btn-transparent am-radius-r am-margin-top-sm" style="width:50%;">注册和聊</a>
 					</div>
 
-					<img src="/_public/images/h5_reg_guide_4.jpg" alt="交流更方便" class="js-guide-img">
+					
 				</div>
-				<div class='slide'>
+				<div class='slide' style="background-color:#fff;">
+
+					<div class='slidecontent-hd'>
+						<img src="/_public/images/view_05_bd.png" class="am-center page-sbkimg">
+						
+					</div>
 					<div class='slidecontent'>
-						<a href="#" class="rh-btn rh-btn-purple rh-radius-r" style="width:50%;">下载app</a><br>
-						<a href="#" class="rh-btn rh-btn-transparent rh-radius-r rh-margin-top-sm" style="width:50%;color:#9174d0;border-color:#9174d0;">注册和聊</a>
+						<a href="#" class="am-btn am-btn-purple am-radius-r" style="width:50%;">下载app</a><br>
+						<a href="#" class="am-btn am-btn-transparent am-radius-r am-margin-top-sm" style="width:50%;color:#9174d0;border-color:#9174d0;">注册和聊</a>
+					</div>					
+				</div>
+				<div class='slide' style="background-color:#fff;">
+
+					<div class='slidecontent-hd'>
+						<img src="/_public/images/view_06_bd.png" class="am-center page-sbkimg">
+						
+					</div>
+					<div class='slidecontent'>
+						<a href="#" class="am-btn am-btn-danger am-radius-r" style="color:#fff;width:50%;">下载app</a><br>
+						<a href="#" class="am-btn am-btn-transparent am-radius-r am-margin-top-sm" style="width:50%;color:#8d8d8d;border-color:#ddd;">注册人和网</a>
 					</div>
 
-					<img src="/_public/images/h5_reg_guide_5.jpg" alt="交流更方便" class="js-guide-img">
-				</div>
-				<div class='slide'>
-					<div class='slidecontent'>
-						<a href="#" class="rh-btn rh-btn-danger rh-radius-r" style="color:#fff;width:50%;">下载app</a><br>
-						<a href="#" class="rh-btn rh-btn-transparent rh-radius-r rh-margin-top-sm" style="width:50%;color:#8d8d8d;border-color:#ddd;">注册人和网</a>
-					</div>
-
-					<img src="/_public/images/h5_reg_guide_6.jpg" alt="交流更方便" class="js-guide-img">
+					
 				</div>
 			</div>
 		</div>

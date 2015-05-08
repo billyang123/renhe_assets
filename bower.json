@@ -23,7 +23,7 @@
   "overrides": {
     "amazeui": {
       "main": [
-        "dist/js/amazeui.min.js"
+        "dist/js/amazeui.js"
       ]
     }
   }

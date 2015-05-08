@@ -17,11 +17,6 @@ exports.config =
       pluginHelpers: 'javascript/vendor.js'
     stylesheets:
       joinTo:'stylesheets/app.css'
-      order:
-        before: [
-          
-        ]
-
     templates:
        joinTo: 'javascripts/app.js'
 

@@ -49,7 +49,7 @@ $document.on 'ajax:send', 'a[data-remote], form[data-remote], button', (evt) ->
 $document.on 'ajax:complete', 'a[data-remote], form[data-remote], button', (evt) ->
   return if this isnt evt.target
   $this = $ this
-  return $this.button 'reset' if $this.data 'am-loading'
+  return $this.button 'reset' if $this.data('am-loading') and !$this.data 'loading-time'
   if $this.is 'form'
     $this.find(':submit:disabled[data-disabled-by=ajax]')
       .removeAttr('disabled')

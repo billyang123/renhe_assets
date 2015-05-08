@@ -12,8 +12,11 @@
 			color: #fff;
 		}
 	}
+	&-gp {
+  		margin-bottom:0 !important;
+  	}
 	&-group {
-
+		border-bottom:1px solid #d0d0d0;
 		background-color: #FFF;
 		label {
 			text-align: right;
@@ -21,9 +24,16 @@
 			color: #888;
 		}
 		&:first-child {
+			border-top:1px solid #d0d0d0;
 			margin-top: 1.5rem;
 		}
+		.am-field-error:focus {
+			border-color: #fff;
+  			box-shadow: none !important;
+		}
 		input,input:focus {
+			border-color: #fff;
+  			box-shadow: none !important;
 			outline: 0;
 			border:0 !important; 
 		}
@@ -32,7 +42,8 @@
 		width:80%;
 		display:inline-block;
 		text-align:left;
-		font-size: 12px;
+		font-size: 1.4rem;
+		margin-bottom: 1.2rem
 	}
 	&-contacts-list {
 		margin-bottom: 52px;
@@ -82,11 +93,8 @@
 		}
 	}
 	&-email-ipt {
-		> input {
-
-		}
 		> span {
-			width:20%;
+			
 			text-align: center;
 			font-size: 18px;
 			line-height:42px;

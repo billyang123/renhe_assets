@@ -13,7 +13,9 @@
     <script type="text/javascript" src="../_public/javascripts/vendor.js"></script>
     <script type="text/javascript" src="../_public/javascripts/app.js"></script>
     <link href="../_public/stylesheets/app.css" rel="stylesheet">
-    <script type="text/javascript" data-main="register/index">require('scripts/main')</script>
+    <script type="text/javascript" data-main="register/index">
+    staticDomain = "#";
+    require('scripts/main')</script>
   </head>
   <body>
     <div class="reg-container">

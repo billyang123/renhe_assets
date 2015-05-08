@@ -19,7 +19,7 @@
             sliderInterval = null;
         obj.currentSlide = 0;
         obj.totalSlides = 0;
-
+        obj.prevIndex = 0;
         // Extend default options with user options
         useroptions = (useroptions === undefined) ? {} : useroptions;
         var options = $.extend({
@@ -34,7 +34,8 @@
             animationEasing: 'ease',
             pauseOnHover: false,
             updateTransit: true, // Change this to false is you dont want the slider to update the transit useTransitionEnd to true
-            unLoopEdCb:false
+            unLoopEdCb:false,
+            onece:false
         }, useroptions);
 
         // Init the slider
@@ -109,19 +110,10 @@
 
                 // Add the swipe actions to the container
 
-                /*$(options.slidesContainer).swipe({
-                    swipeLeft: function(){
-                        obj.nextSlide();
-                    },
-                    swipeRight: function(){
-                        obj.prevSlide();
-                    }
-                });*/
                 var Hammer = $.AMUI.Hammer;
                 var hammertime = new Hammer($(options.slidesContainer)[0]);
 
                 hammertime.on('swipeleft', function(e) {
-
                   obj.nextSlide();
                 });
                 hammertime.on('swiperight', function(e) {
@@ -153,7 +145,9 @@
         // Go to a previous slide (calls the nextslide function with the new slide number
         obj.prevSlide = function(){
             //if(options.unLoopEdCb && obj.currentSlide == 0) return;
-            var slide = (obj.currentSlide > 0) ? obj.currentSlide -= 1 : (obj.totalSlides - 1);
+            //var slide = (obj.currentSlide > 0) ? obj.currentSlide -= 1 : (obj.totalSlides - 1);
+            var unNum = options.onece ? 0:(obj.totalSlides - 1);
+            var slide = (obj.currentSlide > 0) ? obj.currentSlide -= 1 : unNum;
             obj.nextSlide(slide);
         };
 
@@ -163,11 +157,13 @@
             // Cache the previous slide number and set slided to false
             var prevSlide = obj.currentSlide,
                 slided = false;
+            var unNum = options.onece ? (obj.totalSlides - 1):0;
             if(options.unLoopEdCb && obj.currentSlide == (obj.totalSlides-1)) {
                 typeof(options.unLoopEdCb) == "function" && options.unLoopEdCb();
             }
             if(slide === undefined)
-                obj.currentSlide = (obj.currentSlide < (obj.totalSlides-1)) ? obj.currentSlide += 1 : 0 ;
+                //obj.currentSlide = (obj.currentSlide < (obj.totalSlides-1)) ? obj.currentSlide += 1 : 0 ;
+                obj.currentSlide = (obj.currentSlide < (obj.totalSlides-1)) ? obj.currentSlide += 1 : unNum ;
             else
                 obj.currentSlide = slide;
 
@@ -175,7 +171,9 @@
             $(element).trigger({
                 type: "beforeSliding",
                 prevSlide: prevSlide,
-                newSlide: obj.currentSlide
+                newSlide: obj.currentSlide,
+                totalSlides:obj.totalSlides,
+                prevIndex:obj.prevIndex
             });
 
             // Slide animation, here we determine if we can use CSS transitions (transit.js) or have to use jQuery animate
@@ -195,10 +193,13 @@
                     $(element).trigger({
                         type: "afterSliding",
                         prevSlide: prevSlide,
-                        newSlide: obj.currentSlide
+                        newSlide: obj.currentSlide,
+                        totalSlides:obj.totalSlides,
+                        prevIndex:obj.prevIndex
                     });
                     slided = true;
                 }
+                obj.prevIndex = obj.currentSlide;
             }
 
             // Show current slide bulb
